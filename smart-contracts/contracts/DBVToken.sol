@@ -14,6 +14,6 @@ contract DBVToken is ERC20, Ownable {
   }
 
   function mint(address to, uint256 supply) external onlyOwner {
-    _mint(to, supply);
+    _mint(to, supply * (10**decimals()));
   }
 }
