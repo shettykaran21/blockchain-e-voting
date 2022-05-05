@@ -19,22 +19,22 @@ contract Ballot {
 
   Candidate[] public candidates;
 
-  constructor(bytes32[] memory candidateNames) {
+  constructor(bytes32[] memory _candidateNames) {
     contractOwner = msg.sender;
     voters[contractOwner].weight = 1;
 
-    for (uint256 i = 0; i < candidateNames.length; i++) {
-      candidates.push(Candidate({name: candidateNames[i], voteCount: 0}));
+    for (uint256 i = 0; i < _candidateNames.length; i++) {
+      candidates.push(Candidate({name: _candidateNames[i], voteCount: 0}));
     }
   }
 
-  function vote(uint256 candidate) external {
+  function vote(uint256 _candidate) external {
     Voter storage sender = voters[msg.sender];
     require(sender.weight != 0, 'Has no right to vote');
     require(!sender.voted, 'Already voted.');
     sender.voted = true;
-    sender.vote = candidate;
+    sender.vote = _candidate;
 
-    candidates[candidate].voteCount += sender.weight;
+    candidates[_candidate].voteCount += sender.weight;
   }
 }

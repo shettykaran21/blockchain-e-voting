@@ -8,11 +8,11 @@ import 'hardhat/console.sol';
 contract DBVToken is ERC20, Ownable {
   address public contractOwner;
 
-  constructor(uint256 initialSupply)
+  constructor(uint256 _initialSupply)
     ERC20('Decentralized Blockchain Voting Token', 'DBV')
   {
     // console.log('DBV Token Constructor called');
-    _mint(msg.sender, initialSupply * (10**decimals()));
+    _mint(msg.sender, _initialSupply * (10**decimals()));
     contractOwner = msg.sender;
   }
 
