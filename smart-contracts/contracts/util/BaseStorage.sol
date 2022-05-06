@@ -7,7 +7,10 @@ contract BaseStorage is Ownable {
   address public controllerAddress;
 
   modifier onlyController() {
-    require(msg.sender == controllerAddress);
+    require(
+      msg.sender == controllerAddress,
+      'Only the controller is allowed to call this function'
+    );
     _;
   }
 
