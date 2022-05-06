@@ -6,7 +6,7 @@ import '@openzeppelin/contracts/access/Ownable.sol';
 contract BaseController is Ownable {
   address managerAddress;
 
-  function setManagerAddr(address _managerAddress) public onlyOwner {
+  function setManagerAddress(address _managerAddress) public onlyOwner {
     managerAddress = _managerAddress;
   }
 }
