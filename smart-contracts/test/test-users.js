@@ -22,4 +22,18 @@ describe('Create User', function () {
       storage.createUser(owner.address, username, firstName, lastName)
     ).to.be.revertedWith('Only the controller is allowed to call this function')
   })
+
+  it('Should create user with controller', async function () {
+    const UserController = await ethers.getContractFactory('UserController')
+    const controller = await UserController.deploy()
+    await controller.deployed()
+
+    const username = convertToHex('karan')
+    const firstName = convertToHex('Karan')
+    const lastName = convertToHex('Shetty')
+
+    const tx = await controller.createUser(username, firstName, lastName)
+
+    console.log(tx)
+  })
 })
